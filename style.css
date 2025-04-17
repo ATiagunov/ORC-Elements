@@ -19,53 +19,51 @@ body {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: #61d656;
+    background: rgb(245, 245, 245);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     transform: scale(2);
+    border: 3px solid rgb(8, 92, 42);
   }
 
-   .center-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background: white; /* Optional: add background for visibility */
-    border-radius: 50%; /* Optional: make it a circle */
-    z-index: -10;
-    transform: translate(-80%, -80%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #333;
-    /* transform: translate(-200%, -200%); */
-  }
-  
   .button {
+    --angle: calc(360deg / 6 * var(--i));
     position: absolute;
-    width: 170px;
-    height: 150px;
-    background: grey;
+    width: 173px;
+    height: 160px;
+    background: rgb(245, 245, 245);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     display: flex;
     justify-content: center;
-    border-color: solid #1f9614;
-    border-width: 0 2px;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    align-items: flex-end;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
     cursor: pointer;
+    transform:
+      rotate(var(--angle)) 
+      translate(130px); /* Don't rotate back the whole button anymore */
+    left: 50%;
+    top: 50%;
     transform-origin: center;
+  }
+
+  .button span {
+    display: block;
+    transform: rotate(calc(-1 * var(--angle)));
+    padding: 20%;
+
+  }
+
+  .flower {
+    border-radius: 50%;
+    z-index: 10;
   }
   
   .button:hover {
-    background-color: #1f9614;
-  /*   transform: scale(1.1); */
+    background-color: rgba(19, 139, 67, 0.315);
+    color: rgb(255, 238, 0);
   }
   
   .button span {
@@ -73,40 +71,42 @@ body {
     font-size: 16px;
   }
   
-  .button:nth-child(1) {
-    transform: rotate(calc(360deg / 6 * 0)); /* First button, no rotation */
+  .button:nth-child(1) { /* First button */
     position: absolute;
-    left: 60px;
+    left: 64px;
     top: 150px;
+    transform: translate(0,0);
+    
   }
   .button:nth-child(2) {
     transform: rotate(calc(360deg / 6 * 1)); /* Second button */
     position: absolute;
-    left: -5px;
-    top: 113px;
+    left: 0px;
+    top: 112.5px;
   }
   .button:nth-child(3) {
     transform: rotate(calc(360deg / 6 * 2)); /* Third button */
     position: absolute;
-    left: -5px;
-    top: 38px;
+    left: 0px;
+    top: 37.5px;
   }
   .button:nth-child(4) {
     transform: rotate(calc(360deg / 6 * 3)); /* Fourth button */
     position: absolute;
-    left: 60px;
+    left: 64px;
     top: 0px;
+    
   }
   .button:nth-child(5) {
     transform: rotate(calc(360deg / 6 * 4)); /* Fifth button */
     position: absolute;
-    left: 125px;
-    top: 38px;
+    left: 128px;
+    top: 37.5px;
   }
   .button:nth-child(6) {
     transform: rotate(calc(360deg / 6 * 5)); /* Sixth button */
     position: absolute;
-    left: 125px;
-    top: 113px;
+    left: 128px;
+    top: 112.5px;
   }
   
