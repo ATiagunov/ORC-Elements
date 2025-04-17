@@ -5,108 +5,91 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
-  }
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    font-size: 18px;
+    font-family: monospace;
   }
   
   .circle-menu {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
-    background: rgb(245, 245, 245);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #b9b9b9;
     overflow: hidden;
-    transform: scale(2);
-    border: 3px solid rgb(8, 92, 42);
+    border: 2px solid #b9b9b9;
   }
 
   .button {
-    --angle: calc(360deg / 6 * var(--i));
     position: absolute;
-    width: 173px;
-    height: 160px;
-    background: rgb(245, 245, 245);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    color: rgb(0, 0, 0);
-    font-weight: 500;
-    cursor: pointer;
-    transform:
-      rotate(var(--angle)) 
-      translate(130px); /* Don't rotate back the whole button anymore */
-    left: 50%;
+    width: 200px;
+    height: 85%;
     top: 50%;
-    transform-origin: center;
+    left: 50%;
+    transform-origin: 0% 0%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    background-color: #e4e4e4;
+    transition: transform 0.2s, background-color 0.2s;
   }
 
   .button span {
     display: block;
+    text-align: center;
     transform: rotate(calc(-1 * var(--angle)));
-    padding: 20%;
-
+    padding: 50px;
   }
 
   .flower {
     border-radius: 50%;
-    z-index: 10;
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #b9b9b9;
+    z-index: 3;
   }
   
+  .button:nth-child(1) { transform: rotate(0deg); --angle: 0deg; }
+  .button:nth-child(2) { transform: rotate(60deg); --angle: 60deg; }
+  .button:nth-child(3) { transform: rotate(120deg); --angle: 120deg; }
+  .button:nth-child(4) { transform: rotate(180deg); --angle: 180deg; }
+  .button:nth-child(5) { transform: rotate(240deg); --angle: 240deg; }
+  .button:nth-child(6) { transform: rotate(300deg); --angle: 300deg; }
+
+  .center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    font-size: 18px;
+    font-weight: bold;
+    color: #03381d;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
   .button:hover {
-    background-color: rgba(19, 139, 67, 0.315);
-    color: rgb(255, 238, 0);
+    background-color: rgba(2, 51, 22, 0.9);
+    color: #00ff99;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+    transform: scale(1.05) rotate(var(--angle));
+    z-index: 2;
+    box-shadow: 0 0 15px #00cc66;
   }
   
-  .button span {
-    text-align: center;
-    font-size: 16px;
+  .button:hover ~ .center-label {
+    color: #00ff99;
+    text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+  }
+
+  .hovered {
+    transition: transform 0.3s ease;
   }
   
-  .button:nth-child(1) { /* First button */
-    position: absolute;
-    left: 64px;
-    top: 150px;
-    transform: translate(0,0);
-    
+  .button:hover ~ svg .hovered {
+    transform: translate(100px, 100px) scale(1.1);
   }
-  .button:nth-child(2) {
-    transform: rotate(calc(360deg / 6 * 1)); /* Second button */
-    position: absolute;
-    left: 0px;
-    top: 112.5px;
-  }
-  .button:nth-child(3) {
-    transform: rotate(calc(360deg / 6 * 2)); /* Third button */
-    position: absolute;
-    left: 0px;
-    top: 37.5px;
-  }
-  .button:nth-child(4) {
-    transform: rotate(calc(360deg / 6 * 3)); /* Fourth button */
-    position: absolute;
-    left: 64px;
-    top: 0px;
-    
-  }
-  .button:nth-child(5) {
-    transform: rotate(calc(360deg / 6 * 4)); /* Fifth button */
-    position: absolute;
-    left: 128px;
-    top: 37.5px;
-  }
-  .button:nth-child(6) {
-    transform: rotate(calc(360deg / 6 * 5)); /* Sixth button */
-    position: absolute;
-    left: 128px;
-    top: 112.5px;
-  }
-  
